@@ -89,6 +89,7 @@ public class ProductController {
 	 */
 	@GetMapping(value="/products", params="search")
 	public ResponseEntity<List<ProductVO>> getProducts(@RequestParam String search) {
+		log.debug("Getting all products that match pattern: {}", search);
 		List<ProductVO> products = productManager.getProducts(search);
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}	
@@ -100,6 +101,7 @@ public class ProductController {
 	 */
 	@PostMapping("/products")
 	public ResponseEntity<ProductVO> addProduct(@Valid @RequestBody ProductVO newProduct) {
+		log.debug("Posting a Product object: {}", newProduct);
 		ProductVO product = productManager.addProduct(newProduct);		
 		return new ResponseEntity<>(product, HttpStatus.CREATED);
 	}
@@ -112,6 +114,7 @@ public class ProductController {
 	 */
 	@PutMapping("/products/{id}")
 	public ResponseEntity<ProductVO> updateProduct(@PathVariable(value = "id") long id, @RequestBody ProductVO modifiedProduct) {
+		log.debug("Updating Rpoduct object of id: {}, with modified product: {}", id, modifiedProduct);
 		ResponseEntity<ProductVO> responseEntity = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		Optional<ProductVO> product = productManager.getProduct(id);
 		
@@ -130,6 +133,7 @@ public class ProductController {
 	 */
 	@DeleteMapping("/products/{id}")
 	public ResponseEntity<ProductVO> deleteProduct(@PathVariable(value = "id") long id) {
+		log.debug("Deleting object of id: {}", id);
 		ResponseEntity<ProductVO> responseEntity = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		Optional<ProductVO> product = productManager.getProduct(id);
 		
