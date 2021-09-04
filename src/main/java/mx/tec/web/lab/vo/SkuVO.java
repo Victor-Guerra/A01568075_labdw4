@@ -33,8 +33,10 @@ public class SkuVO {
 	@NotBlank(message = "Small Image URL is mandatory")
 	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=_|!:,.;]*[-a-zA-Z0-9+&@#/%=_|]", message = "Please provide a valid small image URL")
 	private String smallImageUrl;
+	@NotBlank(message = "Medium Image URL is mandatory")
 	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=_|!:,.;]*[-a-zA-Z0-9+&@#/%=_|]", message = "Please provide a valid medium image URL")
 	private String mediumImageUrl;
+	@NotBlank(message = "Large Image URL is mandatory")
 	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=_|!:,.;]*[-a-zA-Z0-9+&@#/%=_|]", message = "Please provide a valid large image URL")
 	private String largeImageUrl;
 
