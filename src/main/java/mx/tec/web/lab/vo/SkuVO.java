@@ -6,7 +6,9 @@
  */
 package mx.tec.web.lab.vo;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import mx.tec.web.lab.validation.ValidSize;
 
@@ -22,11 +24,18 @@ public class SkuVO {
 	@ValidSize
 	@NotBlank(message = "Size is mandatory")
 	private String size;
+	@Digits(integer = 4, fraction = 2)
 	private double listPrice;
+	@Digits(integer = 4, fraction = 2)
 	private double salePrice;
+	@Digits(integer = 6, fraction = 0)
 	private long quantityOnHand;
+	@NotBlank(message = "Small Image URL is mandatory")
+	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=_|!:,.;]*[-a-zA-Z0-9+&@#/%=_|]", message = "Please provide a valid small image URL")
 	private String smallImageUrl;
+	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=_|!:,.;]*[-a-zA-Z0-9+&@#/%=_|]", message = "Please provide a valid medium image URL")
 	private String mediumImageUrl;
+	@Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=_|!:,.;]*[-a-zA-Z0-9+&@#/%=_|]", message = "Please provide a valid large image URL")
 	private String largeImageUrl;
 
 	/**
